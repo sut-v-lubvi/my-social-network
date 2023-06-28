@@ -1,0 +1,21 @@
+.post {
+  margin-bottom: 12px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.avatar img {
+  width: 60px;
+  border-radius: 50%;
+}
+.text {
+  padding-bottom: 7px;
+  display: inline-flex;
+  align-items: flex-end;
+  font-size: 18px;
+}
+.like {
+  padding: 0px 0px 10px 20px;
+}

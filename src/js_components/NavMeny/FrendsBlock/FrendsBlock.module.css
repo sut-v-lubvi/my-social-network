@@ -1,0 +1,14 @@
+.conteiner {
+  display: grid;
+  grid-template-rows: 60px 70px;
+  justify-content: center;
+}
+.title {
+  font-size: 32px;
+  text-align: center;
+}
+.friends__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 13px;
+}

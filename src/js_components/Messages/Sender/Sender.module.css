@@ -1,0 +1,13 @@
+.sender {
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+.sender a {
+  color: black;
+}
+.sender a:hover {
+  color: rgb(143, 141, 141);
+}
+.sender .active {
+  color: rgb(143, 141, 141);
+}

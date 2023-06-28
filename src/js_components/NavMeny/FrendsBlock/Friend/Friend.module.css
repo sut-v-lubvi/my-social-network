@@ -1,0 +1,22 @@
+.friend {
+  display: grid;
+  grid-template-rows: 1fr 10px;
+  justify-content: center;
+  margin-bottom: 17px;
+}
+.photo__block {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+}
+.friend a img {
+  height: 80px;
+}
+.friend__name p {
+  padding-top: 7px;
+  font-size: 18px;
+  text-align: center;
+}

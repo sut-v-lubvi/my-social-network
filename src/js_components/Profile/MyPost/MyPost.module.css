@@ -1,0 +1,26 @@
+.conteiner__new__post {
+  padding: 20px;
+  display: grid;
+  grid-template-rows: auto;
+  gap: 15px;
+}
+.text__pole textarea {
+  padding: 12px;
+  box-shadow: inset 3px 3px 10px 2px rgba(0, 0, 0, 0.25),
+    0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  background-color: rgba(99, 103, 107, 0.25);
+  border: 2px solid #e3694a;
+  border-radius: 30px;
+}
+.button button {
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  background-color: #e3694a;
+  width: 75px;
+  height: auto;
+  font-size: 15px;
+  border-radius: 10px;
+}
+.button button:active {
+  transform: translateY(1.5px);
+  box-shadow: inset 0px 1px 1.5px 1px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,47 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin-top: 20px;
+}
+.senders {
+  border-right: 2px solid black;
+  padding: 20px;
+}
+
+.messages {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+}
+.messages__conteiner {
+  flex-grow: 1;
+}
+/* New message */
+.new__message__conteiner {
+  display: grid;
+  grid-template-rows: auto;
+  gap: 15px;
+}
+.button button {
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  background-color: #e3694a;
+  width: 100px;
+  height: auto;
+  font-size: 15px;
+  border-radius: 10px;
+}
+.button button:active {
+  transform: translateY(1.5px);
+  box-shadow: inset 0px 1px 1.5px 1px rgba(0, 0, 0, 0.3);
+}
+textarea {
+  padding: 12px;
+  height: 55px;
+  box-shadow: inset 3px 3px 10px 2px rgba(0, 0, 0, 0.25),
+    0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  background-color: rgba(99, 103, 107, 0.25);
+  border: 2px solid #e3694a;
+  border-radius: 30px;
+}

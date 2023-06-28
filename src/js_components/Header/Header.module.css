@@ -1,0 +1,10 @@
+.header {
+  border: 2px solid #e3694a;
+  border-radius: 20px;
+  grid-area: h;
+  background-color: rgba(99, 103, 107, 0.5);
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+}
+.header div img {
+  width: 100px;
+}
