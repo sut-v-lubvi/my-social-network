@@ -27,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@toolz/allow-react)/\" --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +50,9 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6"
-  }
+  },
+  "homepage": "https://sut-v-lubvi.github.io/my-social-network/"
 }
