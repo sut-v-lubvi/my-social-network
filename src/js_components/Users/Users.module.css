@@ -5,6 +5,12 @@
   padding: 0px 0px 20px 20px;
   font-size: 24px;
 }
+.twist {
+  z-index: 300;
+  margin: 0px auto;
+  width: 500px;
+  height: auto;
+}
 .user__container {
   display: grid;
   grid-template-areas:
@@ -13,12 +19,15 @@
   grid-template-rows: 90px 20px;
   grid-template-columns: 100px 500px;
   margin-bottom: 20px;
+  gap: 20px;
 }
 .avatar {
   margin: 0px auto;
+  background-position: center;
+  background-size: cover;
   grid-area: c;
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   overflow: hidden;
   border-radius: 50%;
 }
@@ -35,6 +44,11 @@
   border-radius: 10px;
 }
 .user__information {
+  box-shadow: inset 3px 3px 10px 2px rgba(0, 0, 0, 0.25),
+    0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  background-color: rgba(99, 103, 107, 0.25);
+  border: 2px solid #e3694a;
+  border-radius: 30px;
   font-size: 18px;
   grid-area: h;
   display: grid;
@@ -46,18 +60,56 @@
   padding: 5px;
 }
 .user__name {
+  padding: 20px 0px 0px 20px;
   grid-area: n;
 }
 .user__status {
+  padding: 10px 0px 0px 20px;
   grid-area: s;
 }
 .user__country {
+  text-align: end;
+  padding: 20px 20px 0px 0px;
   grid-area: co;
 }
 .user__city {
+  text-align: end;
+  padding: 10px 20px 0px 0px;
   grid-area: ci;
 }
 .avatar img {
   width: 120px;
   height: auto;
+}
+.number__page__container {
+  padding: 10px 20px 20px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start;
+}
+.number__page__container button {
+  align-self: center;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  background-color: #e3694a;
+  width: 65px;
+  height: 30px;
+  font-size: 15px;
+  border-radius: 10px;
+}
+.number__page {
+  text-align: center;
+  padding: 20px;
+  font-size: 16;
+}
+.number__page span {
+  display: inline-block;
+  padding-right: 20px;
+  font-size: 16;
+}
+.number__page span:hover {
+  font-size: 18px;
+}
+.number__page span:active {
+  font-size: 16px;
 }

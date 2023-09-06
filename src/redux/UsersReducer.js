@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/usersAPI";
+
 const FOLLOW = "FOLLOW";
 const UN_FOLLOW = "UN_FOLLOW";
 const ADD_USERS = "ADD_USERS";
@@ -7,6 +9,56 @@ const NEXT_NUMBER_OF_PAGE = "NEXT_NUMBER_OF_PAGE";
 const TOGGLE_TWIST = "TOGGLE_TWIST";
 const PREVIOUS_NUMBER_OF_PAGE = "PREVIOUS_NUMBER_OF_PAGE";
 const ADD_CURRENT_USER_ID_FROM_URL = "ADD_CURRENT_USER_ID_FROM_URL";
+const TOGGLE_DISABLE = "TOGGLE_DISABLE";
+
+export const getUsers = (currentPage, pageSize) => {
+  return async (dispatch) => {
+    dispatch(toggleTwist());
+    const data = await usersAPI.getUsers(currentPage, pageSize);
+    dispatch(addUsers(data.items));
+    dispatch(addNumberPage(data.totalCount));
+    dispatch(toggleTwist());
+  };
+};
+export const addNextUsers = (p, pageSize) => {
+  return async (dispatch) => {
+    dispatch(addCurrentPage(p));
+    const data = await usersAPI.getUsers(p, pageSize);
+    dispatch(addUsers(data.items));
+  };
+};
+export const unFollow = (id) => {
+  return async (dispatch) => {
+    {
+      dispatch(toggleDisable(true, id));
+      const data = await usersAPI.unFollow(id);
+      console.log(data.resultCode);
+      if (data.resultCode === 0) {
+        dispatch(unfollow(id));
+      }
+      dispatch(toggleDisable(false, id));
+    }
+  };
+};
+export const follow = (id) => {
+  return async (dispatch) => {
+    dispatch(toggleDisable(true, id));
+    const data = await usersAPI.follow(id);
+    console.log(data.resultCode);
+    if (data.resultCode === 0) {
+      dispatch(followAC(id));
+    }
+    dispatch(toggleDisable(false, id));
+  };
+};
+
+export const toggleDisable = (isFetching, userId) => {
+  return {
+    type: TOGGLE_DISABLE,
+    isFetching,
+    userId,
+  };
+};
 
 export const addCurrentUserIDFromURLAC = (userId) => {
   return {
@@ -15,7 +67,7 @@ export const addCurrentUserIDFromURLAC = (userId) => {
   };
 };
 
-export const follow = (userId) => {
+export const followAC = (userId) => {
   return {
     type: FOLLOW,
     userId,
@@ -64,7 +116,7 @@ export const toggleTwist = () => {
 };
 
 let initialState = {
-  currentUserIDFromURL: 2,
+  currentUserIDFromURL: 28987,
   users: [],
   pageSize: 100,
   fullNumberOfPage: [5],
@@ -72,16 +124,25 @@ let initialState = {
   currentNumberOfPage: [],
   currentPage: 1,
   twist: false,
+  isFetching: false,
+  buttonStatus: [],
 };
 
 let UsersReducer = (state = initialState, action) => {
   switch (action.type) {
+    case TOGGLE_DISABLE:
+      return {
+        ...state,
+        buttonStatus: action.isFetching
+          ? [...state.buttonStatus, action.userId]
+          : state.buttonStatus.filter((e) => e !== action.userId),
+      };
     case FOLLOW:
       return {
         ...state,
         users: state.users.map((e) => {
           if (action.userId === e.id) {
-            return { ...e, condition: true };
+            return { ...e, followed: true };
           }
           return e;
         }),
@@ -96,7 +157,7 @@ let UsersReducer = (state = initialState, action) => {
         ...state,
         users: state.users.map((e) => {
           if (action.userId === e.id) {
-            return { ...e, condition: false };
+            return { ...e, followed: false };
           }
           return e;
         }),

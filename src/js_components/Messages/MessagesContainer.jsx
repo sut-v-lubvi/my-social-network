@@ -1,31 +1,25 @@
-import React from "react";
-import {
-  newMessageCreator,
-  symbolInMessageCreator,
-} from "../../redux/messageReducer";
+import { newMessageCreator } from "../../redux/messageReducer";
 import Messages from "./Messages";
 import { connect } from "react-redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
+import { getMessage } from "../../redux/messagesSelectors";
 
 let mapStateToProps = (state) => {
   return {
-    messagePage: state.messagePage,
+    messagePage: getMessage(state),
   };
 };
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    addSymbolInMessage(symbolInMessagePole) {
-      dispatch(symbolInMessageCreator(symbolInMessagePole));
-    },
-    addMessages() {
-      dispatch(newMessageCreator());
+    addMessages(newMessage) {
+      dispatch(newMessageCreator(newMessage));
     },
   };
 };
 
-const MessagesContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  withAuthRedirect,
+  connect(mapStateToProps, mapDispatchToProps)
 )(Messages);
-
-export default MessagesContainer;

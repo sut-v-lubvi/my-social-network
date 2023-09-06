@@ -1,3 +1,9 @@
+.user__name {
+  text-align: center;
+  width: 200px;
+  padding: 20px 0px 0px 20px;
+  font-size: 24px;
+}
 .flex__conteiner__img__text {
   padding: 20px;
   display: flex;
@@ -20,6 +26,13 @@
 }
 .description {
   padding: 10px 0px 0px 20px;
+}
+.description .post {
+  padding-top: 10px;
+  font-size: 16px;
+}
+.post a {
+  color: black;
 }
 .description .post_title {
   font-size: 20px;

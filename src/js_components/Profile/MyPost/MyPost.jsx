@@ -1,33 +1,40 @@
 import s from "./MyPost.module.css";
 import Post from "./Post/Post";
-import React from "react";
+import React, { useState } from "react";
 
 const MyPost = (props) => {
+  const [textPost, setTextPost] = useState("");
   let allPosts = props.posts.map((p) => (
-    <Post key={p.id} messages={p.postText} likesCount={p.likesCount} />
+    <Post
+      key={p.id}
+      messages={p.postText}
+      likesCount={p.likesCount}
+      profile={props.profile}
+    />
   ));
 
-  let goTextPost = (e) => {
-    let textPostInTextarea = e.target.value;
-    props.addTextPost(textPostInTextarea);
-  };
-
-  let goNewPost = () => {
-    props.addNewPost();
-  };
   return (
     <div>
       <div className={s.conteiner__new__post}>
         <div className={s.text__pole}>
-          <textarea
-            onChange={goTextPost}
+          <input
+            onChange={(e) => {
+              setTextPost(e.target.value);
+            }}
             cols="40"
             rows="2"
-            value={props.newPostText}
-          ></textarea>
+            value={textPost}
+          ></input>
         </div>
         <div className={s.button}>
-          <button onClick={goNewPost}>Add Post</button>
+          <button
+            onClick={() => {
+              props.addNewPost(textPost);
+              setTextPost("");
+            }}
+          >
+            Add Post
+          </button>
         </div>
       </div>
       {allPosts}

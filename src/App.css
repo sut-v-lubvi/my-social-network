@@ -93,8 +93,9 @@ body {
   background-color: #443131;
 }
 .about {
-  padding-top: 30px;
-  width: 1200px;
+  padding-top: 20px;
+  width: 95vw;
+  height: 97vh;
   display: grid;
   grid-template-areas:
     "h h"

@@ -1,25 +1,24 @@
+import { newPostInStateActionCreator } from "../../../redux/profileReducer";
 import {
-  texInTextareaActionCreator,
-  newPostInStateActionCreator,
-} from "../../../redux/profileReducer";
-import React from "react";
+  getNewPostText,
+  getPosts,
+  getProfile,
+} from "../../../redux/profileSelectors";
 import MyPost from "./MyPost";
 import { connect } from "react-redux";
 
 let mapStateToProps = (state) => {
   return {
-    newPostText: state.profilePage.newPostText,
-    posts: state.profilePage.postsData,
+    newPostText: getNewPostText(state),
+    posts: getPosts(state),
+    profile: getProfile(state),
   };
 };
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    addTextPost(textPostInTextarea) {
-      dispatch(texInTextareaActionCreator(textPostInTextarea));
-    },
-    addNewPost() {
-      dispatch(newPostInStateActionCreator());
+    addNewPost(textPost) {
+      dispatch(newPostInStateActionCreator(textPost));
     },
   };
 };
